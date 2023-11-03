@@ -50,6 +50,21 @@ code=["-.-.",".-",","," ","-.-.","'",".","...","-"," ","..-.",".-","..","-"," ",
 afficher(code);
 // Code de l'exercice
 
+let resultat = "";
+
+for (let i = 0; i < taille(code); i++) {
+    for (let j = 0; j < taille(morse); j++) {
+        if (code[i] == morse[j]) {
+            resultat += alphabet[j];
+        }
+    }
+}
+
+afficher(resultat);
+
+// CA CEST FAIT L'EXERCICE SUIVANT EST LE CODE DE CESAR LA CLE UTILISEE EST LE RESULTAT DE LA DIVISION DE QUARANTE DEUX PAR SIX OUI JE SAIS CEST DES 
+// MATHS MAIS JE VOULAIS PLACER UN QUANRANTE DEUX QUELQUE PART ET DE TOUTE MANIERE LA CALCULATRICE EST AUTORISEE
+
 
 
 
@@ -61,6 +76,44 @@ afficher("<h2>#2 - AVE... <small>morituri te salutant</small></h2> ");
 code="IYHCV ! WHZ JVU, JL QBSLZ... VU JVTWSPXBL BU WLB JH WVBY S'LELYJPJL ZBPCHUA, SH ZBIZAPABAPVU WVSFHSWOHILAPXBL, HCLJ SH JSL : ZLWA XBHAYL ULBM (LU JOPMMYL, OLPU)";
 afficher(code);
 // Code de l'exercice
+
+let resultatDeux = ""
+
+for (i = 0; i < taille(code); i++) {
+	for ( j = 0; j < taille(alphabet); j++){
+		if ( code[i] == alphabet[j] ) {
+			if (alphabet[j] == "A" ) {
+				resultatDeux += "T";
+			}
+			else if (alphabet[j] == "B" ) {
+				resultatDeux += "U";
+			}
+			else if (alphabet[j] == "C" ) {
+				resultatDeux += "V";
+			}
+			else if (alphabet[j] == "D" ) {
+				resultatDeux += "W";
+			}
+			else if (alphabet[j] == "E" ) {
+				resultatDeux += "X";
+			}
+			else if (alphabet[j] == "F" ) {
+				resultatDeux += "Y";
+			}
+			else if (alphabet[j] == "G" ) {
+				resultatDeux += "Z";
+			}
+			else {
+				resultatDeux += alphabet[j-7]
+			}
+		}
+	}
+}
+
+
+// T U V W X Y Z 
+afficher(resultatDeux)
+//BRAVO PAS CON CE JULES ON COMPLIQUE UN PEU CA POUR LEXERCICE SUIVANT LA SUBSTITUTION POLYALPHABETIQUE AVEC LA CLE SEPT QUATRE NEUF EN CHIFFRE HEIN
 
 
 
@@ -74,6 +127,135 @@ code="IMNU, TERUXNUEWA ZBI SE USCPSW HN HNJEUHKN IBA JZWRTMULI, SW TNBX WEBZIA E
 afficher(code);
 // Code de l'exercice
 
+// LES CLEFS SONT 7 4 9 . Saut de 7 pour premiere lettre, puis 4 la deuxieme, puis 9 la 3ième, saut de 7 la 4ième ETC
+
+
+let long = taille(code)
+let index;
+let compteur = -1
+
+let multipleZeroTrois = [];
+let multipleUnQuatre = [];
+let multipleDeuxCinq = [];
+
+let rep = ""
+
+// Je me fais des listes de multiples de trois afin de surveiller mon index ( puisqu'il va falloir lui donner un truc à faire en fonction de son x3)
+for (i = 0; i < long; i += 3) {
+    multipleZeroTrois.push(i);
+}
+for (i = 1; i < long; i += 3) {
+    multipleUnQuatre.push(i);
+}
+for (i = 2; i < long; i += 3) {
+    multipleDeuxCinq.push(i);
+}
+
+
+for ( index = 0 ; index < long ; index++){
+	compteur +=1;
+	// + 7 ici
+	if ( multipleZeroTrois.includes(compteur) ){
+		for ( j = 0 ; j < taille(alphabet) ; j++){
+			if (code[index] == alphabet[j]){
+				if (alphabet[j] == "A" ) {
+					rep += "T";
+				}
+				else if (alphabet[j] == "B" ) {
+					rep += "U";
+				}
+				else if (alphabet[j] == "C" ) {
+					rep += "V";
+				}
+				else if (alphabet[j] == "D" ) {
+					rep += "W";
+				}
+				else if (alphabet[j] == "E" ) {
+					rep += "X";
+				}
+				else if (alphabet[j] == "F" ) {
+					rep += "Y";
+				}
+				else if (alphabet[j] == "G" ) {
+					rep += "Z";
+				}
+				else {
+					rep += alphabet[j-7];
+				}				
+			}
+		}
+	}
+	// + 4 ici
+	else if ( multipleUnQuatre.includes(compteur)){
+		for ( j = 0 ; j < taille(alphabet) ; j++){
+			if (code[index] == alphabet[j]){
+				if (alphabet[j] == "A" ) {
+					rep += "W";
+				}
+				else if (alphabet[j] == "B" ) {
+					rep += "X";
+				}
+				else if (alphabet[j] == "C" ) {
+					rep += "Y";
+				}
+				else if (alphabet[j] == "D" ) {
+					rep += "Z";
+				}
+				else {
+					rep += alphabet[j-4];
+				}		
+			}
+		}		
+	}
+	// + 9 ici
+	else if ( multipleDeuxCinq.includes(compteur)){
+		for ( j = 0 ; j < taille(alphabet) ; j++){
+			if (code[index] == alphabet[j]){
+				if (alphabet[j] == "A" ) {
+					rep += "R";
+				}
+				else if (alphabet[j] == "B" ) {
+					rep += "S";
+				}
+				else if (alphabet[j] == "C" ) {
+					rep += "T";
+				}
+				else if (alphabet[j] == "D" ) {
+					rep += "U";
+				}
+				else if (alphabet[j] == "E" ) {
+					rep += "V";
+				}
+				else if (alphabet[j] == "F" ) {
+					rep += "W";
+				}
+				else if (alphabet[j] == "G" ) {
+					rep += "X";
+				}
+				else if (alphabet[j] == "H" ) {
+					rep += "Y";
+				}
+				else if (alphabet[j] == "I" ) {
+					rep += "Z";
+				}								
+				else {
+					rep += alphabet[j-9];
+				}	
+			}
+		}
+	}
+
+	
+}
+
+//FJLKNLQ	
+//IMNUTE
+
+afficher(rep)
+
+
+// BIEN MAINTENANT QUE LA NOTION DE DECALAGE EST ASSIMILEE ON PEUT PASSER AUX CHOSES SERIEUSES LA CLE POUR L'EXERCICE
+// SUIVANT LE CHIFFRE DE VIGENERE EST USBTYPEA
 
 
 
@@ -85,6 +267,9 @@ afficher("<h2>#4 - A L'AISE <small>...</small></h2>");
 code="VAFG HDYE ! GSJL ZDR, CU XBBR SIJU MO LGTGLY WU WCBM QOW DX ADHE U WUX AGECEW... BEJTD, LY FPF BJ TRIUITGC ELAGSBRWQE XW DAGUJRYEFGR TWT FW \"DAGUJRY SEYE(K)B\" (SUFT E'CIEPY VF MPPRSJGTBRXSN, DW O'TG EES YM MX RTQPM VF E'GCXELYSXP, SISIDF. FYXW BIF, EN ADYP, W'WTM NAYS MANIJT)";
 afficher(code);
 // Code de l'exercice
+
+
+
 
 
 
